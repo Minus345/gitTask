@@ -1,11 +1,6 @@
+from __future__ import print_function
 import json
 import datetime
-# Source - https://stackoverflow.com/a
-# Posted by RemcoGerlich, modified by community. See post 'Timeline' for change history
-# Retrieved 2026-01-19, License - CC BY-SA 3.0
-
-from __future__ import print_function
-
 
 class User:
     def __init__(self, username):
