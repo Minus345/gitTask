@@ -1,5 +1,11 @@
 import json
 import datetime
+# Source - https://stackoverflow.com/a
+# Posted by RemcoGerlich, modified by community. See post 'Timeline' for change history
+# Retrieved 2026-01-19, License - CC BY-SA 3.0
+
+from __future__ import print_function
+
 
 class User:
     def __init__(self, username):
@@ -15,7 +21,7 @@ class User:
     def rt(self):
         if len(self.p) > 0:
             for i, po in enumerate(self.p):
-                print(u"Post {}:\n{}".format(i, po)).encode("utf-8")
+                print(u"Post {}:\n{}".format(i, po))
         else:
             print("No posts to display.")
 
