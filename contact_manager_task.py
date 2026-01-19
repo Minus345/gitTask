@@ -18,7 +18,7 @@ class User:
             for i, po in enumerate(self.p):
                 print(u"Post {}:\n{}".format(i, po))
         else:
-            print("No posts to display.")
+            print(u"No posts to display.")
 
     def lp(self, post):
         if post not in self.lps:
