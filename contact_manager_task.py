@@ -15,7 +15,7 @@ class User:
     def rt(self):
         if len(self.p) > 0:
             for i, po in enumerate(self.p):
-                print("Post {}:\n{}".format(i, po))
+                print(u"Post {}:\n{}".format(i, po)).encode("utf-8")
         else:
             print("No posts to display.")
 
