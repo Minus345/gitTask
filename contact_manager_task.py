@@ -3,32 +3,33 @@ import datetime
 
 class User:
     def __init__(self, username):
-        self.u = username
-        self.p = []
-        self.lps = []
+        self.username = username
+        self.posts = []
+        self.likedPostSuccessfully = []
 
-    def cp(self, c):
-        p = {"u": self.u, "c": c, "l": [], "cm": []}
-        self.p.append(p)
-        return p
+    """ this function creates a post for our super coll social media app form Kim :D """
+    def createPost(self, content):
+        post = {"u": self.username, "c": content, "l": [], "cm": []}
+        self.posts.append(post)
+        return post
 
-    def rt(self):
-        if len(self.p) > 0:
-            for i, po in enumerate(self.p):
-                print(u"Post {}:\n{}".format(i, po))
+    def printPosts(self):
+        if len(self.posts) > 0:
+            for i, post in enumerate(self.posts):
+                print(u"Post {}:\n{}".format(i, post))
         else:
             print(u"No posts to display.")
 
-    def lp(self, post):
-        if post not in self.lps:
-            self.lps.append(post)
-            post["l"].append(self.u)
+    def likePost(self, post):
+        if post not in self.likedPostSuccessfully:
+            self.likedPostSuccessfully.append(post)
+            post["l"].append(self.username)
             print("Post liked successfully.")
         else:
             print("You have already liked this post.")
 
     def cop(self, p, c):
-        p["cm"].append({"u": self.u, "c": c})
+        p["cm"].append({"u": self.username, "c": c})
 
 class SM:
     def __init__(self):

@@ -14,12 +14,12 @@ class TestSM(unittest.TestCase):
         self.setUp()
         user = self.social_media.gu("user1")
         self.assertIsNotNone(user)
-        self.assertEqual(user.u, "user1")
+        self.assertEqual(user.username, "user1")
 
     def test_cp(self):
         self.setUp()
         user1 = self.social_media.gu("user1")
-        post = user1.cp("Test post content")
+        post = user1.createPost("Test post content")
         self.assertIsNotNone(post)
         self.assertEqual(post["u"], "user1")
         self.assertEqual(post["c"], "Test post content")
@@ -28,8 +28,8 @@ class TestSM(unittest.TestCase):
         self.setUp()
         user1 = self.social_media.gu("user1")
         user2 = self.social_media.gu("user2")
-        post = user1.cp("Test post")
-        user2.lp(post)
+        post = user1.createPost("Test post")
+        user2.likePost(post)
         self.assertEqual(len(post["l"]), 1)
         self.assertIn("user2", post["l"])
 
@@ -37,7 +37,7 @@ class TestSM(unittest.TestCase):
         self.setUp()
         user1 = self.social_media.gu("user1")
         user2 = self.social_media.gu("user2")
-        post = user1.cp("Test post")
+        post = user1.createPost("Test post")
         user2.cop(post, "Nice post!")
         self.assertEqual(len(post["cm"]), 1)
         self.assertEqual(post["cm"][0]["u"], "user2")
@@ -52,23 +52,23 @@ class TestSM(unittest.TestCase):
     def test_lpo(self):
         self.setUp()
         user1 = self.social_media.gu("user1")
-        post = user1.cp("Test post")
-        user1.lp(post)
+        post = user1.createPost("Test post")
+        user1.likePost(post)
         self.assertEqual(len(post["l"]), 1)  # User can like their own post
 
     def test_dpl(self):
         self.setUp()
         user1 = self.social_media.gu("user1")
         user2 = self.social_media.gu("user2")
-        post = user1.cp("Test post")
-        user2.lp(post)
-        user2.lp(post)
+        post = user1.createPost("Test post")
+        user2.likePost(post)
+        user2.likePost(post)
         self.assertEqual(len(post["l"]), 1)  # User can't like the same post twice
 
     def test_cpo(self):
         self.setUp()
         user1 = self.social_media.gu("user1")
-        post = user1.cp("Test post")
+        post = user1.createPost("Test post")
         user1.cop(post, "My own post comment")
         self.assertEqual(len(post["cm"]), 1)  # User can comment on their own post
 
@@ -76,7 +76,7 @@ class TestSM(unittest.TestCase):
     def test_tle(self, mock_stdout):
         self.social_media.cu("user3")
         user3 = self.social_media.gu("user3")
-        timeline = user3.rt()
+        timeline = user3.printPosts()
         expected_output = "No posts to display.\n"
         self.assertEqual(mock_stdout.getvalue(), expected_output) 
 
