@@ -15,7 +15,7 @@ class User:
     def rt(self):
         if len(self.p) > 0:
             for i, po in enumerate(self.p):
-                print(u"Post {}:\n{}".format(i, po))
+                print("Post {}:\n{}".format(i, po))
         else:
             print("No posts to display.")
 
