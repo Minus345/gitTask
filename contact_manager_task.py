@@ -1,4 +1,3 @@
-from __future__ import print_function
 import json
 import datetime
 
@@ -53,32 +52,32 @@ class SM:
             print("4. Like a Post")
             print("5. Comment on a Post")
             print("6. Exit")
-            c = raw_input("Enter your choice: ")
+            c = input("Enter your choice: ")
             if c == '1':
-                u = raw_input("Enter username: ")
+                u = input("Enter username: ")
                 self.cu(u)
             elif c == '2':
-                u = raw_input("Enter username: ")
+                u = input("Enter username: ")
                 us = self.gu(u)
                 if us:
-                    c = raw_input("Enter post content: ")
+                    c = input("Enter post content: ")
                     p = us.cp(c)
                     print("Post created by {} with content: {}".format(p['u'], p['c']))
                 else:
                     print("User not found.")
             elif c == '3':
-                u = raw_input("Enter username: ")
+                u = input("Enter username: ")
                 us = self.gu(u)
                 if us:
                     us.rt()
                 else:
                     print("User not found.")
             elif c == '4':
-                u = raw_input("Enter username: ")
+                u = input("Enter username: ")
                 us = self.gu(u)
                 if us:
                     pi = int(input("Enter the post index you want to like: "))
-                    au = raw_input("Enter the author's username: ")
+                    au = input("Enter the author's username: ")
                     auu = self.gu(au)
                     if auu:
                         us.lp(auu.p[pi])
@@ -87,14 +86,14 @@ class SM:
                 else:
                     print("User not found.")
             elif c == '5':
-                u = raw_input("Enter username: ")
+                u = input("Enter username: ")
                 us = self.gu(u)
                 if us:
                     pi = int(input("Enter the post index you want to comment on: "))
-                    au = raw_input("Enter the author's username: ")
+                    au = input("Enter the author's username: ")
                     auu = self.gu(au)
                     if auu:
-                        co = raw_input("Enter your comment: ")
+                        co = input("Enter your comment: ")
                         us.cop(auu.p[pi], co)
                     else:
                         print("Author not found.")
